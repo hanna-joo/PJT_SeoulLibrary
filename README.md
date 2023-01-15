@@ -17,9 +17,9 @@
   - 데이터 저장 : MySQL
   - 데이터 시각화 : Django, HTML5, CSS, Plotly
 - 담당 업무
-  - Crawling, API, File 등을 통한 공공 데이터 수집 및 적재(Python, MySQL)
+  - Crawling, API, File 등을 통한 공공 데이터 수집 및 적재
   - 공공성 및 효율성 2가지 관점에서 분석 Dashboard 설계
-  - 분석 Dashboard 구현 (HTML5, CSS, Plotly)
+  - 분석 Dashboard 구현
 - 프로젝트 결과
   - 데이터 시각화 프로젝트 우수상 수상 (멀티캠퍼스)
 
