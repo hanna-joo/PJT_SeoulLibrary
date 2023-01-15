@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>결론</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-size: 20px;
+            min-height: 1200px;
+            background-color: #ecf7fc;
+        }
+        @font-face{
+            font-family: "kopubworld";
+            src: url("../visualization/resources/KoPubWorld Dotum Bold.ttf")
+        }
+        h1{
+            margin-top: 50px;
+            margin-left: 50px;
+            margin-bottom: 20px;
+            font-size: 4em;
+            color: #003458;
+        }
+        #buttons{position: absolute; right: 50px; top: 100px; margin-bottom: 30px;}
+        #buttons input{
+            font-family: "kopubworld";
+            border: none;
+            width: 12vw;
+            background: #003458;
+            color: #f0f8ff;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 15px;
+            transition: 0.25s;
+            font-size: 1.2em;
+        }
+        #buttons input:hover {
+            letter-spacing: 2px;
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+        #map{
+            color: #003458;
+            margin-top: 100px;
+            margin-left: 220px;
+        }
+        #map span{
+            font-size: 2em;
+            text-align: center;
+            color: #003458;
+            font-weight: bold;
+            margin-left: 380px;
+        }
+    </style>
+</head>
+<body>
+    <h1>서울시 공공도서관 결론</h1>
+
+    <div id="buttons">
+        <span><input type="button" value="INTRO" onclick="location.href='{% url 'index' %}'"></span>
+        <span><input type="button" value="신설지역추천" onclick="location.href='{% url 'newloc' %}'"></span>
+        <span><input type="button" value="지식정보취약계층" onclick="location.href='{% url 'disadv' %}'"></span>
+    </div>
+    <div id="map">
+        <span>도서관 신설 및 예산 증대 필요 자치구</span>
+        <div>
+            {% autoescape off %}
+            {{ conclusion }}
+            {% endautoescape %}
+        </div>
+
+    </div>
+</body>
+</html>

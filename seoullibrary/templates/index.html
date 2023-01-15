@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>서울시 공공도서관(분서갱유)</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-size: 20px;
+            min-height: 1200px;
+            background-color: #ecf7fc;
+        }
+        @font-face{
+            font-family: "kopubworld";
+            src: url("../visualization/resources/KoPubWorld Dotum Bold.ttf")
+        }
+        h1{
+            font-family: "kopubworld";
+            margin-top: 50px;
+            margin-left: 50px;
+            margin-bottom: 20px;
+            font-size: 4em;
+            color: #003458;
+        }
+        #buttons{position: absolute; right: 50px; top: 100px; margin-bottom: 30px;}
+        #buttons input{
+            font-family: "kopubworld";
+            border: none;
+            width: 12vw;
+            background: #003458;
+            color: #f0f8ff;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 15px;
+            transition: 0.25s;
+            font-size: 1.2em;
+        }
+        #buttons input:hover {
+            letter-spacing: 2px;
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+        .container{
+            display: grid;
+            margin-left: 50px;
+            margin-right: 50px;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            row-gap: 10px;
+            column-gap: 10px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #003458;
+            text-align: center;
+        }
+        .item{border: 3px solid #003458; background-color: white;}
+        .item:nth-child(1){grid-column: 1; grid-row: 1;}
+        .item:nth-child(2){grid-column: 2; grid-row: 1;}
+        .item:nth-child(3){grid-column: 1; grid-row: 2;}
+        .item:nth-child(4){grid-column: 2; grid-row: 2;}
+        #box1 p{
+            font-size: 2em;
+            color: #003458;
+        }
+        #box1 strong{
+            font-size: 4em;
+            color: #003458;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>서울시 공공도서관</h1>
+
+    <div id="buttons">
+        <span><input type="button" value="신설지역추천" onclick="location.href='{% url 'newloc' %}'"></span>
+        <span><input type="button" value="지식정보취약계층" onclick="location.href='{% url 'disadv' %}'"></span>
+        <span><input type="button" value="CONCLUSION" onclick="location.href='{% url 'conclusion' %}'"></span>
+    </div>
+
+    <div class="container">
+        <div class="item" id="box1">
+            <br><br><br>
+            <p>서울시 공공도서관 수</p>
+            <strong>{{ intro_library_num }}개</strong>
+        </div>
+        <div class="item" id="box2">
+            <span>연령대별 공공도서관 대출 회원</span>
+            <div>
+                {% autoescape off %}
+                {{ rent_ages }}
+                {% endautoescape %}
+            </div>
+        </div>
+        <div class="item" id="box3">
+            <span>자치구별 공공도서관 수</span>
+            <div>
+                {% autoescape off %}
+                {{ intro_map }}
+                {% endautoescape %}
+            </div>
+        </div>
+        <div class="item" id="box4">
+            <span>자치구별 공공도서관 예산</span>
+            <div>
+                {% autoescape off %}
+                {{ gu_lib_budget }}
+                {% endautoescape %}
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

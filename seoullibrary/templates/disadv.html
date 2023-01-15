@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2. 지식정보취약계층</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-size: 20px;
+            min-height: 1100px;
+            background-color: #ecf7fc;
+        }
+        @font-face{
+            font-family: "kopubworld";
+            src: url("../visualization/resources/KoPubWorld Dotum Bold.ttf")
+        }
+        h1{
+            font-family: "kopubworld";
+            margin: 20px 0 0 30px;
+            font-size: 3em;
+            color: #003458;
+        }
+        #buttons{position: absolute; right: 30px; top: 50px;}
+        #buttons input{
+            margin: 10px;
+            font-family: "kopubworld";
+            border: none;
+            width: 12vw;
+            background: #003458;
+            color: #f0f8ff;
+            display: inline-block;
+            padding: 10px;
+            border-radius: 15px;
+            transition: 0.25s;
+            font-size: 1.2em;
+        }
+        #buttons input:hover {
+            letter-spacing: 2px;
+            transform: scale(1.2);
+            cursor: pointer;
+        }
+        .grid{
+            display: grid;
+            margin: 20px;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 1fr 1fr;
+            row-gap: 20px;
+            column-gap: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            color: #003458;
+            text-align: center;
+        }
+        .item{border: 3px solid #003458; padding:10px; background-color: white;}
+        .item:nth-child(1){
+            grid-column: 1 / span 2;
+            grid-row: 1;
+            margin-top: 20px;
+            display: grid;
+        }
+        .flex{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+        }
+        #corr{
+            height: 90%;
+            width: 40%;
+            font-size: 1em;
+            border: none;
+            background-color: #C6E9E5;
+            margin-top: 20px;
+        }
+        #corr > b{margin-top: 50px; color: #003458;}
+        #corr > p{
+            margin-left: 125px;
+            font-size: 0.7em;
+            font-weight: light;
+            color: #003458;
+            padding: 10px;
+            text-align: left;
+        }
+        .item:nth-child(2){grid-column: 1; grid-row: 2;}
+        .item:nth-child(3){grid-column: 2; grid-row: 2;}
+    </style>
+</head>
+<body>
+
+    <h1>지식정보취약계층을 위한 공공도서관</h1>
+
+    <div id="buttons">
+        <span><input type="button" value="INTRO" onclick="location.href='{% url 'index' %}'"></span>
+        <span><input type="button" value="신설지역추천" onclick="location.href='{% url 'newloc' %}'"></span>
+        <span><input type="button" value="CONCLUSION" onclick="location.href='{% url 'conclusion' %}'"></span>
+    </div>
+
+    <div class="grid">
+        <div class="item">
+            <span>취약계층 예산과 도서관 지표의 상관관계</span>
+            <span class="flex">
+                <div>
+                    {% autoescape off %}
+                    {{ corr_heatmap }}
+                    {% endautoescape %}
+                </div>
+                <div id="corr">
+                    <br><br>
+                    <b>상관계수</b>
+                    <br><br>
+                    <p>취약계층 총 예산과 취약계층 이용자 수 : 0.4157</p>
+                    <p>취약계층 총 예산과 도서관 수 : 0.4388</p>
+                    <p>취약계층 평균 예산과 평균 소득 : 0.209</p>
+                </div>
+            </span>
+
+        </div>
+        <div class="item">
+            <span>취약계층 예산과 취약계층 이용자 수 비교</span>
+            <span>
+                {% autoescape off %}
+                {{ disadv_budget_users }}
+                {% endautoescape %}
+            </span>
+        </div>
+        <div class="item">
+            <span>취약계층 예산과 구 평균 소득 비교</span>
+            <span>
+                {% autoescape off %}
+                {{ disadv_av_budget_income }}
+                {% endautoescape %}
+            </span>
+        </div>
+    </div>
+
+</body>
+</html>
