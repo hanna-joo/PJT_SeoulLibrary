@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-# from seoullibrary.visualization import visual
+# from seoul_library.visualization import visual
 from visualization import visual
 
 
